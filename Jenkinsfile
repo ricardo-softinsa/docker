@@ -4,7 +4,7 @@ pipeline{
 	environment{
 		def app
 		//def tag -> Get git commit hash
-		def image = myuser/myrepo:latest
+		def image = "myuser/myrepo:latest"
 	}
 	stages{
 		stage('SCM') {
