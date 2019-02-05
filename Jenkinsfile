@@ -17,7 +17,8 @@ pipeline{
 				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
 				//Declarative
-				bat 'docker build -t ${image} .'
+				echo "${image}"
+				//bat 'docker build -t ${image} .'
 				//Scripted
 				//app = docker.build("username/repo")
 			}
