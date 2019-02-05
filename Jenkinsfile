@@ -56,9 +56,7 @@ pipeline{
 		*/
 	}
 	post{
-		always{
-			deleteDir()
-		}
+
 		success{
 			slackSend color: 'good', message: "SUCCESS: ${currentBuild.fullDisplayName}\n${image} pushed successfully to Docker Hub"
 		}
