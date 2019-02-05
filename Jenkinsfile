@@ -17,7 +17,7 @@ pipeline{
 				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
 				//Declarative
-				bat 'ls'
+				bat 'docker ps'
 				//bat 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				//app = docker.build("username/repo")
