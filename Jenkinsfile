@@ -25,7 +25,7 @@ pipeline{
 		stage('Test'){
 			steps{
 				//echo "feweffew"
-				sh 'docker run --rm -it ubuntu:14.04 bash'
+				sh 'winpty docker run --rm -it ubuntu:14.04 bash'
 				sh 'echo "Tests passed"'
 				sh 'exit'
 				//Scripted
