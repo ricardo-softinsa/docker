@@ -14,20 +14,20 @@ pipeline{
 		}
 		stage('Build'){
 			steps{
-				echo "Running on ${NODE_NAME}"
-				bat 'docker -v'
+				//echo "Running on ${NODE_NAME}"
+				//bat 'docker -v'
 				//Declarative
-				//bat 'docker build -t ${image} .'
+				bat 'docker build -t ${image} .'
 				//Scripted
 				//app = docker.build("username/repo")
 			}
 		}
 		stage('Test'){
 			steps{
-				//echo "feweffew"
-				sh 'winpty docker run --rm -it ubuntu:14.04 bash'
-				sh 'echo "Tests passed"'
-				sh 'exit'
+				echo "feweffew"
+				//sh 'winpty docker run --rm -it ubuntu:14.04 bash'
+				//sh 'echo "Tests passed"'
+				//sh 'exit'
 				//Scripted
 				//app.inside {
 				//	sh 'echo "Tests passed"'
