@@ -15,8 +15,7 @@ pipeline{
 		stage('Build'){
 			steps{
 				echo "Running on ${NODE_NAME}"
-				echo "${Tilt}"
-				//bat 'docker -v'
+				bat 'docker -v'
 				//Declarative
 				//bat 'docker build -t ${image} .'
 				//Scripted
