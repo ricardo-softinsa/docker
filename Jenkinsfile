@@ -2,9 +2,9 @@ pipeline{
 	agent any
 	//If Scripted, we need to declare app before we can use it
 	environment{
-		def app
+		//def app
 		//def tag -> Get git commit hash
-		def image = "myuser/myrepo:latest"
+		def image = 'myuser/myrepo:latest'
 	}
 	stages{
 		stage('SCM') {
