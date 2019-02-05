@@ -55,13 +55,4 @@ pipeline{
 		}
 		*/
 	}
-	post{
-
-		success{
-			slackSend color: 'good', message: "SUCCESS: ${currentBuild.fullDisplayName}\n${image} pushed successfully to Docker Hub"
-		}
-		failure{
-			slackSend color: 'danger', message: "FAILURE: ${currentBuild.fullDisplayName}\nSomething went wrong pushing to Docker Hub\nFailed On: ${FAILED_STAGE}"
-		}
-	}
 }
