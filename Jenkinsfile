@@ -15,7 +15,8 @@ pipeline{
 		stage('Build'){
 			steps{
 				echo "Running on ${NODE_NAME}"
-				bat 'docker -v'
+				echo "${Path}"
+				//bat 'docker -v'
 				//Declarative
 				//bat 'docker build -t ${image} .'
 				//Scripted
@@ -24,7 +25,8 @@ pipeline{
 		}
 		stage('Test'){
 			steps{
-				sh 'docker run --rm -it ${image} bash'
+				echo "feweffew"
+				//sh 'docker run --rm -it ${image} bash'
 				//sh 'echo "Tests passed"'
 				//sh 'exit'
 				//Scripted
