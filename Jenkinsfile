@@ -14,17 +14,19 @@ pipeline{
 		}
 		stage('Build'){
 			steps{
+				bat 'docker -v'
 				//Declarative
-				sh 'docker build -t ${image} .'
+				//bat 'docker build -t ${image} .'
 				//Scripted
 				//app = docker.build("username/repo")
 			}
 		}
 		stage('Test'){
 			steps{
-				sh 'docker run --rm -it ub bash'
-				sh 'echo "Tests passed"'
-				sh 'exit'
+				echo "dqwd"
+				//sh 'docker run --rm -it ub bash'
+				//sh 'echo "Tests passed"'
+				//sh 'exit'
 				//Scripted
 				//app.inside {
 				//	sh 'echo "Tests passed"'
