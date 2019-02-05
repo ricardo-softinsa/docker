@@ -24,10 +24,10 @@ pipeline{
 		}
 		stage('Test'){
 			steps{
-				echo "feweffew"
-				//sh 'docker run --rm -it ${image} bash'
-				//sh 'echo "Tests passed"'
-				//sh 'exit'
+				//echo "feweffew"
+				sh 'docker run --rm -it ${image} bash'
+				sh 'echo "Tests passed"'
+				sh 'exit'
 				//Scripted
 				//app.inside {
 				//	sh 'echo "Tests passed"'
