@@ -18,6 +18,7 @@ pipeline{
 				//bat 'docker -v'
 				//Declarative
 				//bat 'docker-machine start ls'
+				echo "---------"
 				script{
 					def myimage = docker.build("myuser/myrepo:latest")
 				}
