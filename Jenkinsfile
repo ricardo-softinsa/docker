@@ -18,7 +18,10 @@ pipeline{
 				//bat 'docker -v'
 				//Declarative
 				//bat 'docker-machine start ls'
-				bat 'docker build -t myuser/myrepo:latest .'
+				script{
+					def myimage = docker.build("myuser/myrepo:latest")
+				}
+				//bat 'docker build -t myuser/myrepo:latest .'
 				//bat 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				//app = docker.build("username/repo")
@@ -26,7 +29,12 @@ pipeline{
 		}
 		stage('Test'){
 			steps{
-				echo "----"
+				//echo "----"
+				script{
+					customImage.inside {
+						echo "Something"
+					}
+				}
 				//sh 'winpty docker run --rm -it ubuntu:14.04 bash'
 				//sh 'echo "Tests passed"'
 				//sh 'exit'
