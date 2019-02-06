@@ -1,5 +1,5 @@
 pipeline{
-	agent any
+	agent docker { image 'ubuntu:14.04' }
 	//If Scripted, we need to declare app before we can use it
 	environment{
 		//def app
@@ -7,12 +7,20 @@ pipeline{
 		def image = 'myuser/myrepo:latest'
 	}
 	stages{
+        stage('Test') {
+            steps {
+                sh 'vim --version'
+            }
+        }
+		/*
 		stage('SCM') {
+			agent any
 			steps{
 				checkout scm
 			}
 		}
 		stage('Build'){
+			agent any
 			steps{
 				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
@@ -26,7 +34,7 @@ pipeline{
 		stage('Test'){
 			steps{
 				echo "----"
-				
+
 				//Declarative
 				//sh 'docker run --rm -it myuser/myrepo:latest bash'
 				//sh 'echo "Tests passed"'
@@ -37,7 +45,6 @@ pipeline{
 				//}
 			}
 		}
-		/*
 		stage('Publish'){
 			steps{
 				//Declarative
