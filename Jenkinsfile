@@ -17,20 +17,15 @@ pipeline{
 				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
 				//Declarative
-
-
-				//ERROR: The docker-machine doesn't seem to be running on jenkins, try to start the machine and run docker commands...
-
-
-				bat 'docker-machine start ls'
-				//bat 'docker build -t myuser/myrepo:latest .'
+				//bat 'docker-machine start ls'
+				bat 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				//app = docker.build("username/repo")
 			}
 		}
 		stage('Test'){
 			steps{
-				echo "feweffew"
+				echo "----"
 				//sh 'winpty docker run --rm -it ubuntu:14.04 bash'
 				//sh 'echo "Tests passed"'
 				//sh 'exit'
