@@ -1,5 +1,7 @@
 pipeline{
-	agent docker { image 'ubuntu:14.04' }
+	agent{
+		docker { image 'ubuntu:14.04' }
+	}
 	//If Scripted, we need to declare app before we can use it
 	environment{
 		//def app
