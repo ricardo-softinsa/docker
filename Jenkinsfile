@@ -1,7 +1,5 @@
 pipeline{
-	agent{
-		docker { image 'ubuntu:14.04' }
-	}
+	agent any
 	//If Scripted, we need to declare app before we can use it
 	environment{
 		//def app
@@ -9,12 +7,6 @@ pipeline{
 		def image = 'myuser/myrepo:latest'
 	}
 	stages{
-        stage('Test') {
-            steps {
-                sh 'vim --version'
-            }
-        }
-		/*
 		stage('SCM') {
 			agent any
 			steps{
@@ -22,25 +14,24 @@ pipeline{
 			}
 		}
 		stage('Build'){
-			agent any
 			steps{
 				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
 
 				//Declarative
-				//bat 'docker build -t myuser/myrepo:latest .'
+				bat 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				//app = docker.build("username/repo")
 			}
 		}
 		stage('Test'){
 			steps{
-				echo "----"
+				//echo "----"
 
 				//Declarative
-				//sh 'docker run --rm -it myuser/myrepo:latest bash'
-				//sh 'echo "Tests passed"'
-				//sh 'exit'
+				sh 'docker run --rm -it myuser/myrepo:latest bash'
+				sh 'echo "Tests passed"'
+				sh 'exit'
 				//Scripted
 				//app.inside {
 				//	sh 'echo "Tests passed"'
@@ -50,10 +41,10 @@ pipeline{
 		stage('Publish'){
 			steps{
 				//Declarative
-				//withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
+				withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
 					//Push with as many tags as you like
-					//sh 'docker push username/repo:latest'
-				//}
+					sh 'docker push username/repo:latest'
+				}
 				//Scripted
 				//docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
 					//app.push("${env.BUILD_NUMBER}")
@@ -66,6 +57,5 @@ pipeline{
 				//sh 'docker pull username/repo:tag'
 			}
 		}
-		*/
 	}
 }
