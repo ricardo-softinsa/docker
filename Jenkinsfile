@@ -37,7 +37,7 @@ pipeline{
 			}
 			steps{
 				script{
-					echo "${GIT_COMMIT_HASH}"
+					echo "${env.GIT_COMMIT_HASH}"
 					app.inside {
 						sh 'echo "Tests passed"'
 					}
