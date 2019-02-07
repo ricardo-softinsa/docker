@@ -30,7 +30,9 @@ pipeline{
 			}
 		}
 		stage('Test'){
-			agent { dockerfile true }
+			agent {
+				label 'Vagrant_SSH'
+			}
 			steps{
 				sh 'ls'
 				//sh 'vim --version'
