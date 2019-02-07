@@ -27,7 +27,7 @@ pipeline{
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					app = docker.build("${image}:${tag}")
+					app = docker.build("${image}")
 				}
 			}
 		}
