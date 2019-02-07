@@ -38,7 +38,7 @@ pipeline{
 				script{
 					docker.image('ubuntu').inside {
 						stage('Something'){
-							sh 'echo "Somethiiiiiinnnnnngggggg"'
+							echo "Something"
 						}
 					}
 				}
