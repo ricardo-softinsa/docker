@@ -22,19 +22,20 @@ pipeline{
 			steps{
 				echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
-
 				//Declarative
-				//bat 'docker build -t myuser/myrepo:latest .'
+				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
-				//app = docker.build("username/repo")
+				app = docker.build("username/repo")
 			}
 		}
 		stage('Test'){
 			agent{
-				docker { image 'ubuntu' }
+				label 'Vagrant_SSH'
 			}
 			steps{
-				sh 'vim --version'
+				app.inside {
+					sh 'echo "Tests passed"'
+				}
 			}
 			/*
 			steps{
