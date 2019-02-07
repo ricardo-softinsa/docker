@@ -38,7 +38,9 @@ pipeline{
 					agent{
 						dockerfile true
 					}
-					sh 'vim --version'
+					steps{
+						sh 'vim --version'
+					}
 				}
 			}
 			/*
