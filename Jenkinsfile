@@ -26,8 +26,7 @@ pipeline{
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					echo $image
-					app = docker.build('myuser/myrepo:latest')
+					app = docker.build("${image}")
 				}
 			}
 		}
