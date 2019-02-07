@@ -4,8 +4,8 @@ pipeline{
 	environment{
 		//def app
 		//def tag -> Get git commit hash
-		def tag = "Something"
-		def image = 'myuser/myrepo:latest'
+		def tag = $(git log -1 --pretty=%H)
+		def image = 'myuser/myrepo'
 	}
 	stages{
 		stage('SCM') {
@@ -21,14 +21,13 @@ pipeline{
 				label 'Vagrant_SSH'
 			}
 			steps{
-				echo "Running on ${NODE_NAME}"
+				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
 				//Declarative
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					echo "${image}  ${tag}"
-					//app = docker.build("${image}")
+					app = docker.build("${image}:${tag}")
 				}
 			}
 		}
@@ -38,12 +37,10 @@ pipeline{
 			}
 			steps{
 				script{
-					echo "fwg"
-					/*
+					echo "${tag}"
 					app.inside {
 						sh 'echo "Tests passed"'
 					}
-					*/
 				}
 			}
 			/*
