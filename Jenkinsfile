@@ -4,7 +4,7 @@ pipeline{
 	environment{
 		//def app
 		//def tag -> Get git commit hash
-		def tag = git log -1 --pretty=%H
+		//def tag = git log -1 --pretty=%H
 		def image = 'myuser/myrepo'
 	}
 	stages{
@@ -37,7 +37,7 @@ pipeline{
 			}
 			steps{
 				script{
-					echo "${tag}"
+					echo "${GIT_COMMIT_HASH}"
 					app.inside {
 						sh 'echo "Tests passed"'
 					}
