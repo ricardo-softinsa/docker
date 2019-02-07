@@ -33,6 +33,15 @@ pipeline{
 			agent {
 				label 'Vagrant_SSH'
 			}
+			stages{
+				stage('fewfewfewfewfew'){
+					agent{
+						dockerfile true
+					}
+					sh 'vim --version'
+				}
+			}
+			/*
 			steps{
 				sh 'ls'
 				//sh 'vim --version'
@@ -41,7 +50,7 @@ pipeline{
 
 				//echo "----"
 				//sh 'docker -v'
-				/*
+				
 				script{
 					docker.image('ubuntu').inside {
 						stage('Something'){
@@ -49,7 +58,7 @@ pipeline{
 						}
 					}
 				}
-				*/
+				
 				//Declarative
 				//sh 'docker run --rm -it myuser/myrepo:latest bash'
 				//sh 'echo "Tests passed"'
@@ -59,6 +68,7 @@ pipeline{
 				//	sh 'echo "Tests passed"'
 				//}
 			}
+			*/
 		}
 		/*
 		stage('Publish'){
