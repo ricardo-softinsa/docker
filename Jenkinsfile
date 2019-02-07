@@ -8,13 +8,17 @@ pipeline{
 	}
 	stages{
 		stage('SCM') {
-			agent any
+			agent {
+				label 'Vagrant_SSH'
+			}
 			steps{
 				checkout scm
 			}
 		}
 		stage('Build'){
-			agent any
+			agent {
+				label 'Vagrant_SSH'
+			}
 			steps{
 				echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
