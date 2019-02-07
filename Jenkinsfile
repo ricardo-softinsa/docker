@@ -27,7 +27,8 @@ pipeline{
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					app = docker.build("${image}:${tag}")
+					echo "${tag}"
+					//app = docker.build("${image}:${tag}")
 				}
 			}
 		}
@@ -37,9 +38,11 @@ pipeline{
 			}
 			steps{
 				script{
+					/*
 					app.inside {
 						sh 'echo "Tests passed"'
 					}
+					*/
 				}
 			}
 			/*
