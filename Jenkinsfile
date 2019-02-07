@@ -35,8 +35,8 @@ pipeline{
 			}
 			steps{
 				//echo "----"
-				sh 'docker -v'
-				/*
+				//sh 'docker -v'
+				
 				script{
 					docker.image('ubuntu').inside {
 						stage('Something'){
@@ -44,7 +44,7 @@ pipeline{
 						}
 					}
 				}
-				*/
+				
 				//Declarative
 				//sh 'docker run --rm -it myuser/myrepo:latest bash'
 				//sh 'echo "Tests passed"'
