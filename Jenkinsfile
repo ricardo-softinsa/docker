@@ -27,11 +27,12 @@ pipeline{
 		stage('Test'){
 			steps{
 				//echo "----"
-
+				script{
 				docker.image('ruby:2.3.1').inside {
 					stage('Something'){
 						sh 'echo "Somethiiiiiinnnnnngggggg"'
 					}
+				}
 				}
 
 				//Declarative
