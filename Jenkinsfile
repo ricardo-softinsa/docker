@@ -26,7 +26,7 @@ pipeline{
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					app = docker.build("username/repo")
+					app = docker.build("username/repo:v1")
 				}
 			}
 		}
