@@ -25,7 +25,9 @@ pipeline{
 				//Declarative
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
-				app = docker.build("username/repo")
+				script{
+					app = docker.build("username/repo")
+				}
 			}
 		}
 		stage('Test'){
@@ -33,8 +35,10 @@ pipeline{
 				label 'Vagrant_SSH'
 			}
 			steps{
-				app.inside {
-					sh 'echo "Tests passed"'
+				script{
+					app.inside {
+						sh 'echo "Tests passed"'
+					}
 				}
 			}
 			/*
