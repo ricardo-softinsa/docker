@@ -4,6 +4,7 @@ pipeline{
 	environment{
 		//def app
 		//def tag -> Get git commit hash
+		def tag = "Something"
 		def image = 'myuser/myrepo:latest'
 	}
 	stages{
@@ -26,7 +27,8 @@ pipeline{
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					app = docker.build("${image}")
+					echo "${image}  ${tag}"
+					//app = docker.build("${image}")
 				}
 			}
 		}
@@ -36,9 +38,12 @@ pipeline{
 			}
 			steps{
 				script{
+					echo "fwg"
+					/*
 					app.inside {
 						sh 'echo "Tests passed"'
 					}
+					*/
 				}
 			}
 			/*
