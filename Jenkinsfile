@@ -30,18 +30,11 @@ pipeline{
 			}
 		}
 		stage('Test'){
-			agent {
-				label 'Vagrant_SSH'
+			agent{
+				docker { image 'ubuntu' }
 			}
-			stages{
-				stage('fewfewfewfewfew'){
-					agent{
-						dockerfile true
-					}
-					steps{
-						sh 'vim --version'
-					}
-				}
+			steps{
+				sh 'vim --version'
 			}
 			/*
 			steps{
