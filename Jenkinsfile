@@ -1,5 +1,5 @@
 pipeline{
-	agent any
+	agent none
 	//If Scripted, we need to declare app before we can use it
 	environment{
 		//def app
@@ -14,6 +14,7 @@ pipeline{
 			}
 		}
 		stage('Build'){
+			agent any
 			steps{
 				echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
@@ -25,14 +26,17 @@ pipeline{
 			}
 		}
 		stage('Test'){
+			agent {
+				label 'Vagrant_SSH'
+			}
 			steps{
 				//echo "----"
 				script{
-				docker.image('ubuntu').inside {
-					stage('Something'){
-						sh 'echo "Somethiiiiiinnnnnngggggg"'
+					docker.image('ubuntu').inside {
+						stage('Something'){
+							sh 'echo "Somethiiiiiinnnnnngggggg"'
+						}
 					}
-				}
 				}
 
 				//Declarative
