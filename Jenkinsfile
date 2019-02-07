@@ -15,11 +15,11 @@ pipeline{
 		}
 		stage('Build'){
 			steps{
-				//echo "Running on ${NODE_NAME}"
+				echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
 
 				//Declarative
-				bat 'docker build -t myuser/myrepo:latest .'
+				//bat 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				//app = docker.build("username/repo")
 			}
@@ -28,16 +28,23 @@ pipeline{
 			steps{
 				//echo "----"
 
+				docker.image('ruby:2.3.1').inside {
+					stage('Something'){
+						sh 'echo "Somethiiiiiinnnnnngggggg"'
+					}
+				}
+
 				//Declarative
-				sh 'docker run --rm -it myuser/myrepo:latest bash'
-				sh 'echo "Tests passed"'
-				sh 'exit'
+				//sh 'docker run --rm -it myuser/myrepo:latest bash'
+				//sh 'echo "Tests passed"'
+				//sh 'exit'
 				//Scripted
 				//app.inside {
 				//	sh 'echo "Tests passed"'
 				//}
 			}
 		}
+		/*
 		stage('Publish'){
 			steps{
 				//Declarative
@@ -57,5 +64,6 @@ pipeline{
 				//sh 'docker pull username/repo:tag'
 			}
 		}
+		*/
 	}
 }
