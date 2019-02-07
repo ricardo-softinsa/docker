@@ -28,7 +28,7 @@ pipeline{
 			steps{
 				//echo "----"
 				script{
-				docker.image('ruby:2.3.1').inside {
+				docker.image('ubuntu').inside {
 					stage('Something'){
 						sh 'echo "Somethiiiiiinnnnnngggggg"'
 					}
