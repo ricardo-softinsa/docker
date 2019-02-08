@@ -1,5 +1,5 @@
 pipeline{
-	agent none
+	agent any
 
 	environment{
 		//def tag -> Get git commit hash
@@ -25,7 +25,6 @@ pipeline{
 
 				//Scripted
 				script{
-					//echo "${env.GIT_COMMIT}"
 					app = docker.build("${image}:${env.GIT_COMMIT}")
 				}
 
@@ -77,7 +76,8 @@ pipeline{
 		}
 		stage('Verify'){
 			steps{
-				//sh 'docker pull username/repo:tag'
+				//sh 'docker rmi myuser/myrepo:latest'
+				//sh 'docker pull myuser/myrepo:latest'
 			}
 		}
 		*/
