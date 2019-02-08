@@ -1,8 +1,7 @@
 pipeline{
 	agent none
-	//If Scripted, we need to declare app before we can use it
+
 	environment{
-		//def app
 		//def tag -> Get git commit hash
 		def image = 'myuser/myrepo'
 	}
@@ -20,9 +19,6 @@ pipeline{
 				label 'Vagrant_SSH'
 			}
 			steps{
-
-				//echo "Running on ${NODE_NAME}"
-				//bat 'docker -v'
 
 				//Declarative
 				//sh 'docker build -t myuser/myrepo:latest .'
