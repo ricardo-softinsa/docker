@@ -4,7 +4,7 @@ pipeline{
 	environment{
 		//def app
 		//def tag -> Get git commit hash
-		def tag = "${env.GIT_COMMIT}"
+		//def tag = "${env.GIT_COMMIT}"
 		def image = 'myuser/myrepo'
 	}
 	stages{
@@ -27,7 +27,7 @@ pipeline{
 				//sh 'docker build -t myuser/myrepo:latest .'
 				//Scripted
 				script{
-					echo "${tag}"
+					echo "${env.GIT_COMMIT}"
 					//app = docker.build("${image}:${tag}")
 				}
 			}
