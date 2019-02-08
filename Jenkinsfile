@@ -38,6 +38,7 @@ pipeline{
 			}
 			steps{
 				script{
+					echo "fwfew"
 					/*
 					app.inside {
 						sh 'echo "Tests passed"'
