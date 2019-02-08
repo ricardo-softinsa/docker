@@ -48,14 +48,7 @@ pipeline{
 			}
 			/*
 			steps{
-				sh 'ls'
-				//sh 'vim --version'
 
-
-
-				//echo "----"
-				//sh 'docker -v'
-				
 				script{
 					docker.image('ubuntu').inside {
 						stage('Something'){
@@ -68,10 +61,6 @@ pipeline{
 				//sh 'docker run --rm -it myuser/myrepo:latest bash'
 				//sh 'echo "Tests passed"'
 				//sh 'exit'
-				//Scripted
-				//app.inside {
-				//	sh 'echo "Tests passed"'
-				//}
 			}
 			*/
 		}
@@ -96,5 +85,10 @@ pipeline{
 			}
 		}
 		*/
+	}
+	post{
+		always{
+			deleteDir()
+		}
 	}
 }
