@@ -4,7 +4,6 @@ pipeline{
 	environment{
 		//def app
 		//def tag -> Get git commit hash
-		//def tag = "${env.GIT_COMMIT}"
 		def image = 'myuser/myrepo'
 	}
 	stages{
@@ -21,15 +20,19 @@ pipeline{
 				label 'Vagrant_SSH'
 			}
 			steps{
+
 				//echo "Running on ${NODE_NAME}"
 				//bat 'docker -v'
+
 				//Declarative
 				//sh 'docker build -t myuser/myrepo:latest .'
+
 				//Scripted
 				script{
-					echo "${env.GIT_COMMIT}"
-					//app = docker.build("${image}:${tag}")
+					//echo "${env.GIT_COMMIT}"
+					app = docker.build("${image}:${env.GIT_COMMIT}")
 				}
+
 			}
 		}
 		stage('Test'){
@@ -38,12 +41,9 @@ pipeline{
 			}
 			steps{
 				script{
-					echo "fwfew"
-					/*
 					app.inside {
 						sh 'echo "Tests passed"'
 					}
-					*/
 				}
 			}
 			/*
