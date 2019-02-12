@@ -3,7 +3,7 @@ pipeline{
 
 	environment{
 		//def tag -> Get git commit hash
-		def image = 'myuser/myrepo'
+		def image = 'ricardomiguel/testing'
 	}
 	stages{
 		stage('SCM') {
@@ -43,22 +43,22 @@ pipeline{
 				}
 			}
 		}
-		/*
 		stage('Publish'){
 			steps{
 				//Declarative
-				withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
+				/*
+				withDockerRegistry([ credentialsId: "Docker_Hub", url: "" ]) {
 					//Push with as many tags as you like
 					sh 'docker push username/repo:latest'
 				}
+				*/
 				//Scripted
-				//docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-					//app.push("${tag}")
-					//app.push("latest")
-				//}
+				docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
+					app.push("${env.GIT_COMMIT}")
+					app.push("latest")
+				}
 			}
 		}
-		*/
 	}
 	post{
 		always{
