@@ -46,22 +46,25 @@ pipeline{
 		stage('Publish'){
 			steps{
 				//Declarative
+				/*
 				withDockerRegistry([ credentialsId: "Docker_Hub", url: "" ]) {
 					//Push with as many tags as you like
 					sh 'sudo docker push ricardomiguel/testing:latest'
 				}
-				/*
+				*/
+				
 				//Scripted
 				//https://registry.hub.docker.com
 				echo "Before-----------------------------------------------------------------"
 				script{
 					docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
+						echo "fwfeewf"
 						app.push("${env.GIT_COMMIT}")
 						app.push("latest")
 					}
 				}
 				echo "After-----------------------------------------------------------------"
-				*/
+				
 			}
 		}
 	}
