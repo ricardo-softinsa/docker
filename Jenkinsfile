@@ -46,6 +46,9 @@ pipeline{
 			}
 		}
 		stage('Publish'){
+			agent{
+				label 'Vagrant_SSH'
+			}
 			steps{
 				//Declarative
 				/*
