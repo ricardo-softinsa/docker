@@ -26,10 +26,17 @@ pipeline{
 				//Scripted
 				script{
 					app = docker.build("${image}")
+					
+
+					docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
+						app.push("${env.GIT_COMMIT}")
+						app.push("latest")
+					}
 				}
 
 			}
 		}
+		/*
 		stage('Test'){
 			agent{
 				label 'Vagrant_SSH'
@@ -43,15 +50,17 @@ pipeline{
 				}
 			}
 		}
+		*/
+		/*
 		stage('Publish'){
 			steps{
 				//Declarative
-				/*
+				
 				withDockerRegistry([ credentialsId: "Docker_Hub", url: "" ]) {
 					//Push with as many tags as you like
 					sh 'sudo docker push ricardomiguel/testing:latest'
 				}
-				*/
+				
 				
 				//Scripted
 				//https://registry.hub.docker.com
@@ -67,6 +76,7 @@ pipeline{
 				
 			}
 		}
+		*/
 	}
 	/*
 	post{
