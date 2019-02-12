@@ -39,27 +39,9 @@ pipeline{
 					app.inside {
 						sh 'echo "Tests passed"'
 						sh 'vi --version'
-						sh 'echo "It reached this point......"'
 					}
 				}
 			}
-			/*
-			steps{
-
-				script{
-					docker.image('ubuntu').inside {
-						stage('Something'){
-							echo "Something"
-						}
-					}
-				}
-				
-				//Declarative
-				//sh 'docker run --rm -it myuser/myrepo:latest bash'
-				//sh 'echo "Tests passed"'
-				//sh 'exit'
-			}
-			*/
 		}
 		/*
 		stage('Publish'){
@@ -76,17 +58,17 @@ pipeline{
 				//}
 			}
 		}
-		stage('Verify'){
-			steps{
-				//sh 'docker rmi myuser/myrepo:latest'
-				//sh 'docker pull myuser/myrepo:latest'
-			}
-		}
 		*/
 	}
 	post{
 		always{
 			deleteDir()
+		}
+		success{
+			slackSend color: 'good',message: "${currentBuild.fullDisplayName} was pushed successfully to Docker Hub\n${env.BUILD_URL}"
+		}
+		failure{
+			slackSend color: 'danger',message: "${currentBuild.fullDisplayName} failed to push to Docker Hub\n${env.BUILD_URL}"
 		}
 	}
 }
