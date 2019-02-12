@@ -71,7 +71,6 @@ pipeline{
 			}
 		}
 	}
-	/*
 	post{
 		always{
 			deleteDir()
@@ -83,5 +82,4 @@ pipeline{
 			slackSend color: 'danger',message: "${currentBuild.fullDisplayName} failed to push to Docker Hub\n${env.BUILD_URL}"
 		}
 	}
-	*/
 }
