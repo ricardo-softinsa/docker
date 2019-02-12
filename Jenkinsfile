@@ -56,7 +56,7 @@ pipeline{
 				
 				echo "Before-----------------------------------------------------------------"
 				script{
-					docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
+					docker.withRegistry('', 'Docker_Hub') {
 						app.push("${env.GIT_COMMIT}")
 						app.push("latest")
 					}
