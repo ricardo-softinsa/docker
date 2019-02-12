@@ -46,26 +46,26 @@ pipeline{
 		stage('Publish'){
 			steps{
 				//Declarative
-				/*
 				withDockerRegistry([ credentialsId: "Docker_Hub", url: "" ]) {
 					//Push with as many tags as you like
-					sh 'docker push ricardomiguel/testing:latest'
+					sh 'sudo docker push ricardomiguel/testing:latest'
 				}
-				*/
+				/*
 				//Scripted
 				//https://registry.hub.docker.com
 				echo "Before-----------------------------------------------------------------"
 				script{
-					docker.withRegistry('https://index.docker.io/v1/', 'Docker_Hub') {
+					docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
 						app.push("${env.GIT_COMMIT}")
 						app.push("latest")
 					}
 				}
 				echo "After-----------------------------------------------------------------"
-				
+				*/
 			}
 		}
 	}
+	/*
 	post{
 		always{
 			deleteDir()
@@ -77,4 +77,5 @@ pipeline{
 			slackSend color: 'danger',message: "${currentBuild.fullDisplayName} failed to push to Docker Hub\n${env.BUILD_URL}"
 		}
 	}
+	*/
 }
