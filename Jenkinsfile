@@ -53,10 +53,10 @@ pipeline{
 				}
 				*/
 				//Scripted
-				
+				//https://registry.hub.docker.com
 				echo "Before-----------------------------------------------------------------"
 				script{
-					docker.withRegistry('', 'Docker_Hub') {
+					docker.withRegistry('https://index.docker.io/v1/', 'Docker_Hub') {
 						app.push("${env.GIT_COMMIT}")
 						app.push("latest")
 					}
