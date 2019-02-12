@@ -65,7 +65,7 @@ pipeline{
 			deleteDir()
 		}
 		success{
-			slackSend color: 'good',message: "${currentBuild.fullDisplayName} was pushed successfully to Docker Hub\n${env.BUILD_URL}"
+			slackSend color: 'good',message: "${currentBuild.fullDisplayName} - ${image}:${env.GIT_COMMIT} was pushed successfully to Docker Hub\n${env.BUILD_URL}"
 		}
 		failure{
 			slackSend color: 'danger',message: "${currentBuild.fullDisplayName} failed to push to Docker Hub\n${env.BUILD_URL}"
