@@ -38,6 +38,8 @@ pipeline{
 				script{
 					app.inside {
 						sh 'echo "Tests passed"'
+						sh 'vim -v'
+						sh 'echo "It reached this point......"'
 					}
 				}
 			}
