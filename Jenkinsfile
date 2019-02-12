@@ -53,12 +53,14 @@ pipeline{
 				}
 				*/
 				//Scripted
+				echo "Before-----------------------------------------------------------------"
 				script{
 					docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
 						app.push("${env.GIT_COMMIT}")
 						app.push("latest")
 					}
 				}
+				echo "After-----------------------------------------------------------------"
 			}
 		}
 	}
