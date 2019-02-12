@@ -1,9 +1,10 @@
+def app
+
 pipeline{
 	agent any
 
 	environment{
 		//def tag -> Get git commit hash
-		def app
 		def image = 'ricardomiguel/testing'
 	}
 	stages{
