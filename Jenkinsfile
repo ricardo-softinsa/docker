@@ -46,13 +46,14 @@ pipeline{
 		stage('Publish'){
 			steps{
 				//Declarative
-				/*
+				
 				withDockerRegistry([ credentialsId: "Docker_Hub", url: "" ]) {
 					//Push with as many tags as you like
-					sh 'docker push username/repo:latest'
+					sh 'docker push ricardomiguel/testing:latest'
 				}
-				*/
+				
 				//Scripted
+				/*
 				echo "Before-----------------------------------------------------------------"
 				script{
 					docker.withRegistry('https://registry.hub.docker.com', 'Docker_Hub') {
@@ -61,6 +62,7 @@ pipeline{
 					}
 				}
 				echo "After-----------------------------------------------------------------"
+				*/
 			}
 		}
 	}
